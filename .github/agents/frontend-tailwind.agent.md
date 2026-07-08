@@ -1,7 +1,7 @@
 ---
 description: Agente de frontend para evoluir o visual com Tailwind CSS 3 sem regressao funcional.
 name: frontend-tailwind
-tools: ['search', 'codebase', 'usages', 'editFiles', 'runCommands', 'problems']
+tools: [execute/runInTerminal, read/readFile, vscodeGeneral/usages, edit/editFiles, search]
 handoffs:
   - label: Revisar qualidade da entrega
     agent: code-reviewer

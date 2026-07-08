@@ -51,30 +51,46 @@ export default function App() {
   };
 
   return (
-    <main style={{ maxWidth: '760px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>Document Management System</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl items-start px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+      <div className="w-full rounded-3xl border border-white/70 bg-white/85 p-6 shadow-soft backdrop-blur-sm sm:p-8">
+        <header className="mb-8 border-b border-slate-200 pb-6">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Painel</p>
+          <h1 className="font-serif text-3xl font-semibold text-ink sm:text-4xl">Document Management System</h1>
+          <p className="mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
+            Gerencie uploads, acompanhe metadados e baixe documentos de forma centralizada.
+          </p>
+        </header>
 
-      {errorMessage ? (
-        <p style={{ color: '#b00020' }} role="alert">
-          {errorMessage}
-        </p>
-      ) : null}
+        {errorMessage ? (
+          <p
+            className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+            role="alert"
+          >
+            {errorMessage}
+          </p>
+        ) : null}
 
-      {successMessage ? (
-        <p style={{ color: '#1f7a1f' }} role="status">
-          {successMessage}
-        </p>
-      ) : null}
+        {successMessage ? (
+          <p
+            className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700"
+            role="status"
+          >
+            {successMessage}
+          </p>
+        ) : null}
 
-      <UploadComponent onUpload={handleUpload} disabled={isUploading} />
+        <UploadComponent onUpload={handleUpload} disabled={isUploading} />
 
-      <hr style={{ margin: '1.5rem 0' }} />
+        <div className="my-7 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" aria-hidden="true" />
 
-      {isLoadingDocuments ? (
-        <p>Carregando documentos...</p>
-      ) : (
-        <DocumentList documents={documents} onDownloadError={handleDownloadError} />
-      )}
+        {isLoadingDocuments ? (
+          <p className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-600">
+            Carregando documentos...
+          </p>
+        ) : (
+          <DocumentList documents={documents} onDownloadError={handleDownloadError} />
+        )}
+      </div>
     </main>
   );
 }
